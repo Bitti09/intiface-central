@@ -37,7 +37,7 @@ class DeviceControlWidget extends StatelessWidget {
                     builder: (context, state) => Column(
                       children: [
                         ListTile(
-                          title: Text("${output.type.name} ${output.feature.feature.featureIndex + 1}"),
+                          title: Text("${output.type.name[0].toUpperCase()}${output.type.name.substring(1)} ${output.feature.feature.featureIndex + 1}"),
                           subtitle: Text(
                             "Description: ${output.feature.feature.featureDescription} - Step Count: $range - Current Value: ${output.currentValue}",
                           ),
@@ -115,7 +115,7 @@ class DeviceControlWidget extends StatelessWidget {
               if (input is InputReadBloc) {
                 outputList.addAll([
                   ListTile(
-                    title: Text(input.inputType.name),
+                    title: Text("${input.inputType.name[0].toUpperCase()}${input.inputType.name.substring(1)}"),
                     subtitle: Text(
                       "Description: ${input.descriptor} - Sensor Range: ${input.sensorRange}",
                     ),
