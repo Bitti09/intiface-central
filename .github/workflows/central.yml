@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: buttplugio/buttplug
+          repository: Bitti09/buttplug
           path: buttplug
       - uses: actions/checkout@v3
         with:
@@ -73,7 +73,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: buttplugio/buttplug
+          repository: Bitti09/buttplug
           path: buttplug
       - uses: actions/checkout@v3
         with:
