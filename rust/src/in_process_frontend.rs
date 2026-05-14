@@ -33,6 +33,7 @@ impl FlutterIntifaceEngineFrontend {
   }
 
   /// Mark the frontend as closed to prevent sending messages after shutdown.
+  #[allow(dead_code)]
   pub fn close(&self) {
     self.closed.store(true, Ordering::SeqCst);
   }

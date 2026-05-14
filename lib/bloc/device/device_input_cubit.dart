@@ -6,7 +6,7 @@ abstract class DeviceInputState {}
 class DeviceInputStateInitial extends DeviceInputState {}
 
 class DeviceInputStateUpdate extends DeviceInputState {
-  int value;
+  dynamic value;
 
   DeviceInputStateUpdate(this.value);
 }
@@ -25,7 +25,7 @@ abstract class DeviceInputBloc<T> extends Bloc<T, DeviceInputState> {
   final String descriptor;
   final List<List<int>> sensorRange;
   final InputType inputType;
-  int _currentData = 0;
+  dynamic _currentData = 0;
 
   DeviceInputBloc(
     this._device,
@@ -34,7 +34,7 @@ abstract class DeviceInputBloc<T> extends Bloc<T, DeviceInputState> {
     this.inputType,
   ) : super(DeviceInputStateInitial());
 
-  int get currentData => _currentData;
+  dynamic get currentData => _currentData;
 }
 
 class InputReadBloc extends DeviceInputBloc<DeviceInputReadEvent> {
@@ -45,8 +45,9 @@ class InputReadBloc extends DeviceInputBloc<DeviceInputReadEvent> {
     super.inputType,
   ) {
     on<DeviceInputReadEvent>(((event, emit) async {
-      var newData = await _device.battery();
-      if (_currentData != newData) {
+      var newData = await _device.readInput(inputType);
+      // for lists, we might need a deep equality check or just re-emit
+      if (_currentData.toString() != newData.toString()) {
         _currentData = newData;
         return emit(DeviceInputStateUpdate(_currentData));
       }

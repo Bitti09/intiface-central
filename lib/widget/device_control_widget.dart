@@ -45,6 +45,7 @@ class DeviceControlWidget extends StatelessWidget {
                       max: range[1].toDouble(),
                       value: output.currentValue.floorToDouble(),
                       divisions: (range[0].abs() + range[1].abs()),
+                      label: output.currentValue.floor().toString(),
                       onChanged: ((value) async {
                         output.setValue(value.ceil());
                       }),
@@ -76,6 +77,10 @@ class DeviceControlWidget extends StatelessWidget {
                               output.currentMax,
                             ),
                             divisions: range[1],
+                            labels: RangeLabels(
+                              output.currentMin.floor().toString(),
+                              output.currentMax.floor().toString(),
+                            ),
                             onChanged: ((values) async {
                               output.setPosition(values.start, values.end);
                             }),
@@ -83,6 +88,8 @@ class DeviceControlWidget extends StatelessWidget {
                           Slider(
                             max: 3000,
                             value: output.currentDuration.floorToDouble(),
+                            divisions: 30, // Steps of 100ms
+                            label: "${output.currentDuration.floor()} ms",
                             onChanged: ((value) async {
                               output.duration(value);
                             }),
