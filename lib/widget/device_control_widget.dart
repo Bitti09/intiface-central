@@ -30,25 +30,29 @@ class DeviceControlWidget extends StatelessWidget {
               if (output is ValueOutputCubit) {
                 var range = output.feature.feature.output![output.type]!.value!;
                 outputList.addAll([
-                  ListTile(
-                    title: Text("${output.type.name} ${output.feature.feature.featureIndex + 1}"),
-                    subtitle: Text(
-                      "Description: ${output.feature.feature.featureDescription} - Step Count: $range",
-                    ),
-                  ),
                   BlocBuilder<DeviceOutputCubit, DeviceOutputState>(
                     bloc: output,
                     buildWhen: (previous, current) =>
                         current is DeviceOutputStateUpdate,
-                    builder: (context, state) => Slider(
-                      min: range[0].toDouble(),
-                      max: range[1].toDouble(),
-                      value: output.currentValue.floorToDouble(),
-                      divisions: (range[0].abs() + range[1].abs()),
-                      label: output.currentValue.floor().toString(),
-                      onChanged: ((value) async {
-                        output.setValue(value.ceil());
-                      }),
+                    builder: (context, state) => Column(
+                      children: [
+                        ListTile(
+                          title: Text("${output.type.name} ${output.feature.feature.featureIndex + 1}"),
+                          subtitle: Text(
+                            "Description: ${output.feature.feature.featureDescription} - Step Count: $range - Current Value: ${output.currentValue}",
+                          ),
+                        ),
+                        Slider(
+                          min: range[0].toDouble(),
+                          max: range[1].toDouble(),
+                          value: output.currentValue.floorToDouble(),
+                          divisions: (range[0].abs() + range[1].abs()),
+                          label: output.currentValue.floor().toString(),
+                          onChanged: ((value) async {
+                            output.setValue(value.ceil());
+                          }),
+                        ),
+                      ],
                     ),
                   ),
                 ]);
