@@ -1,5 +1,7 @@
 # Intiface® Central
 
+> [!NOTE]
+> **Custom Fork:** This repository is a fork of the original [Intiface Central](https://github.com/intiface/intiface-central) by Nonpolynomial Labs. It has been customized to integrate explicit protocol support and hardware authentication for the **LELO F1S V3**, utilizing the custom Buttplug Rust fork.
 
 [![Discourse Forums](https://img.shields.io/discourse/status?label=buttplug.io%20forums&server=https%3A%2F%2Fdiscuss.buttplug.io)](https://discuss.buttplug.io)
 [![Discord](https://img.shields.io/discord/353303527587708932.svg?logo=discord)](https://discord.buttplug.io)
