@@ -27,7 +27,7 @@ jobs:
           path: buttplug
       - uses: actions/checkout@v3
         with:
-          repository: buttplugio/buttplug_dart
+          repository: Bitti09/buttplug_dart
           path: buttplug_dart
       - uses: actions/checkout@v3
         with:
@@ -77,7 +77,7 @@ jobs:
           path: buttplug
       - uses: actions/checkout@v3
         with:
-          repository: buttplugio/buttplug_dart
+          repository: Bitti09/buttplug_dart
           path: buttplug_dart
       - uses: actions/checkout@v3
         with:
