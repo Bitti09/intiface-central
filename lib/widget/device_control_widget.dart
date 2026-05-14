@@ -31,7 +31,7 @@ class DeviceControlWidget extends StatelessWidget {
                 var range = output.feature.feature.output![output.type]!.value!;
                 outputList.addAll([
                   ListTile(
-                    title: Text(output.type.name),
+                    title: Text("${output.type.name} ${output.feature.feature.featureIndex + 1}"),
                     subtitle: Text(
                       "Description: ${output.feature.feature.featureDescription} - Step Count: $range",
                     ),
